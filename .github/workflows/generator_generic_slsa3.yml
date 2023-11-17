@@ -227,6 +227,8 @@ jobs:
           GITHUB_CONTEXT: "${{ toJSON(github) }}"
           UNTRUSTED_PROVENANCE_NAME: "${{ inputs.provenance-name }}"
           UNTRUSTED_DEPRECATED_ATTESTATION_NAME: "${{ inputs.attestation-name }}"
+        with:
+          compile-generator: true
         run: |
           set -euo pipefail
           untrusted_prov_name=""
