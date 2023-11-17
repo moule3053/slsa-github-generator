@@ -79,7 +79,7 @@ runs:
       uses: moule3053/slsa-github-generator/.github/actions/secure-builder-checkout@v1.10.0
       with:
         repository: moule3053/slsa-github-generator
-        ref: main
+        ref: ref: v1.10.0
         path: __BUILDER_CHECKOUT_DIR__
 
     - name: Publish to the Maven Central Repository
