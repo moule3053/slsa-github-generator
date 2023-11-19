@@ -204,8 +204,6 @@ jobs:
           UNTRUSTED_SECRET_IMAGE: "${{ secrets.image }}"
           UNTRUSTED_DIGEST: "${{ inputs.digest }}"
           GITHUB_CONTEXT: "${{ toJSON(github) }}"
-        with:
-          compile-generator: true
         run: |
           set -euo pipefail
 
