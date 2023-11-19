@@ -27,7 +27,7 @@ import (
 
 const (
 	// DefaultRekorAddr is the default rekor base URL.
-	DefaultRekorAddr = "http://34.175.10.71/"
+	DefaultRekorAddr = "http://34.18.9.50:3000/"
 )
 
 // Rekor implements TransparencyLog.
