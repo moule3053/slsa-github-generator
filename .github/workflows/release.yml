@@ -78,7 +78,6 @@ jobs:
       go-version: "1.20"
       config-file: .github/workflows/configs-generic/config-release.yml
       compile-builder: true
-      compile-generator: true
 
   # Go builder.
   go-builder:
@@ -92,7 +91,6 @@ jobs:
       go-version: "1.20"
       config-file: .github/workflows/configs-go/config-release.yml
       compile-builder: true
-      compile-generator: true
 
   # Docker builder.
   docker-builder:
@@ -106,4 +104,3 @@ jobs:
       go-version: "1.20"
       config-file: .github/workflows/configs-docker/config-release.yml
       compile-builder: true
-      compile-generator: true

@@ -169,7 +169,8 @@ jobs:
           ref: "${{ needs.detect-env.outputs.ref }}"
           go-version: "1.20"
           binary: "${{ env.BUILDER_BINARY }}"
-          compile-builder: "${{ inputs.compile-generator }}"
+          #compile-builder: "${{ inputs.compile-generator }}"
+          compile-builder: true
           directory: "${{ env.BUILDER_DIR }}"
           allow-private-repository: ${{ inputs.private-repository }}
 
