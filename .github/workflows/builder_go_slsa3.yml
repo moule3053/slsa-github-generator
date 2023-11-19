@@ -86,7 +86,7 @@ on:
         description: "Build the builder from source. This increases build time by ~2m."
         required: false
         type: boolean
-        default: false
+        default: true
       private-repository:
         description: "If true, private repositories can post to the public transparency log."
         required: false
