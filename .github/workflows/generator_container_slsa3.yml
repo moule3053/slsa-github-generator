@@ -204,7 +204,7 @@ jobs:
           UNTRUSTED_SECRET_IMAGE: "${{ secrets.image }}"
           UNTRUSTED_DIGEST: "${{ inputs.digest }}"
           GITHUB_CONTEXT: "${{ toJSON(github) }}"
-          SIGSTORE_REKOR_PUBLIC_KEY: "xxx"
+          SIGSTORE_REKOR_PUBLIC_KEY: "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAENioHFqBTrWojtMvg6Zrf+DoSQc2QuPVaULyF2HLJhplakOfPRDCCKDts+S00hXcUL5n2ctC0j5GZB45z4j8eMg=="
         run: |
           set -euo pipefail
 

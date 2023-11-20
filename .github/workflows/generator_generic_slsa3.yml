@@ -227,7 +227,7 @@ jobs:
           GITHUB_CONTEXT: "${{ toJSON(github) }}"
           UNTRUSTED_PROVENANCE_NAME: "${{ inputs.provenance-name }}"
           UNTRUSTED_DEPRECATED_ATTESTATION_NAME: "${{ inputs.attestation-name }}"
-          SIGSTORE_REKOR_PUBLIC_KEY: "xxx"
+          SIGSTORE_REKOR_PUBLIC_KEY: "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAENioHFqBTrWojtMvg6Zrf+DoSQc2QuPVaULyF2HLJhplakOfPRDCCKDts+S00hXcUL5n2ctC0j5GZB45z4j8eMg=="
         run: |
           set -euo pipefail
           untrusted_prov_name=""
