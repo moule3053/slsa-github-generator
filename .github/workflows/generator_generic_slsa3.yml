@@ -227,9 +227,13 @@ jobs:
           GITHUB_CONTEXT: "${{ toJSON(github) }}"
           UNTRUSTED_PROVENANCE_NAME: "${{ inputs.provenance-name }}"
           UNTRUSTED_DEPRECATED_ATTESTATION_NAME: "${{ inputs.attestation-name }}"
-          SIGSTORE_REKOR_PUBLIC_KEY: "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAENioHFqBTrWojtMvg6Zrf+DoSQc2QuPVaULyF2HLJhplakOfPRDCCKDts+S00hXcUL5n2ctC0j5GZB45z4j8eMg=="
+          SIGSTORE_REKOR_PUBLIC_KEY: "/tmp/reko_pub_key.pem"
         run: |
           set -euo pipefail
+
+          echo "Download Rekor public key"
+          curl http://34.18.9.50:3000/api/v1/log/publicKey -o /tmp/reko_pub_key.pem
+
           untrusted_prov_name=""
           if [ "$UNTRUSTED_PROVENANCE_NAME" != "" ]; then
             untrusted_prov_name="$UNTRUSTED_PROVENANCE_NAME"
