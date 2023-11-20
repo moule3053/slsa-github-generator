@@ -55,84 +55,52 @@ jobs:
 
   # Generic generator.
   container-generator:
-    name: Container generator
-    runs-on: ubuntu-latest
-    needs: [pre-release-refs]
-    permissions:
-      id-token: write # For signing.
-      contents: write # For asset uploads.
-      actions: read # For the entrypoint.    
-    steps:
-      - name: Download Rekor public key
-        run: |
-          echo "Download Rekor public key"
-          curl http://34.18.9.50:3000/api/v1/log/publicKey -o /tmp/rekor_pub_key.pem
-      - name: Container generator
-        uses: moule3053/slsa-github-generator/.github/workflows/builder_go_slsa3.yml@v1.10.0
-        with:
-          go-version: "1.20"
-          config-file: .github/workflows/configs-container/config-release.yml
-          compile-builder: true
-
-  # Generic generator.
-  generic-generator:
-    name: Generic generator
-    runs-on: ubuntu-latest
-    needs: [pre-release-refs]
-    permissions:
-      id-token: write # For signing.
-      contents: write # For asset uploads.
-      actions: read # For the entrypoint.    
-    steps:
-      - name: Download Rekor public key
-        run: |
-          echo "Download Rekor public key"
-          curl http://34.18.9.50:3000/api/v1/log/publicKey -o /tmp/rekor_pub_key.pem
-      - name: Generic generator  
-        uses: moule3053/slsa-github-generator/.github/workflows/builder_go_slsa3.yml@v1.10.0
-        with:
-          go-version: "1.20"
-          config-file: .github/workflows/configs-generic/config-release.yml
-          compile-builder: true
-
-  # Go builder.
-  go-builder:
-    name: Go builder
-    runs-on: ubuntu-latest
-    needs: [pre-release-refs]
-    permissions:
-      id-token: write # For signing.
-      contents: write # For asset uploads.
-      actions: read # For the entrypoint.    
-    steps:
-      - name: Download Rekor public key
-        run: |
-          echo "Download Rekor public key"
-          curl http://34.18.9.50:3000/api/v1/log/publicKey -o /tmp/rekor_pub_key.pem
-      - name: Go builder  
-        uses: moule3053/slsa-github-generator/.github/workflows/builder_go_slsa3.yml@v1.10.0
-        with:
-          go-version: "1.20"
-          config-file: .github/workflows/configs-go/config-release.yml
-          compile-builder: true
-
-  # Docker builder.
-  docker-builder:
-    name: Docker builder
-    runs-on: ubuntu-latest
     needs: [pre-release-refs]
     permissions:
       id-token: write # For signing.
       contents: write # For asset uploads.
       actions: read # For the entrypoint.
-    steps:
-      - name: Download Rekor public key
-        run: |
-          echo "Download Rekor public key"
-          curl http://34.18.9.50:3000/api/v1/log/publicKey -o /tmp/rekor_pub_key.pem
-      - name: Docker builder  
-        uses: moule3053/slsa-github-generator/.github/workflows/builder_go_slsa3.yml@v1.10.0
-        with:
-          go-version: "1.20"
-          config-file: .github/workflows/configs-docker/config-release.yml
-          compile-builder: true
+    uses: moule3053/slsa-github-generator/.github/workflows/builder_go_slsa3.yml@v1.10.0
+    with:
+      go-version: "1.20"
+      config-file: .github/workflows/configs-container/config-release.yml
+      compile-builder: true
+
+  # Generic generator.
+  generic-generator:
+    needs: [pre-release-refs]
+    permissions:
+      id-token: write # For signing.
+      contents: write # For asset uploads.
+      actions: read # For the entrypoint.
+    uses: moule3053/slsa-github-generator/.github/workflows/builder_go_slsa3.yml@v1.10.0
+    with:
+      go-version: "1.20"
+      config-file: .github/workflows/configs-generic/config-release.yml
+      compile-builder: true
+
+  # Go builder.
+  go-builder:
+    needs: [pre-release-refs]
+    permissions:
+      id-token: write # For signing.
+      contents: write # For asset uploads.
+      actions: read # For the entrypoint.
+    uses: moule3053/slsa-github-generator/.github/workflows/builder_go_slsa3.yml@v1.10.0
+    with:
+      go-version: "1.20"
+      config-file: .github/workflows/configs-go/config-release.yml
+      compile-builder: true
+
+  # Docker builder.
+  docker-builder:
+    needs: [pre-release-refs]
+    permissions:
+      id-token: write # For signing.
+      contents: write # For asset uploads.
+      actions: read # For the entrypoint.
+    uses: moule3053/slsa-github-generator/.github/workflows/builder_go_slsa3.yml@v1.10.0
+    with:
+      go-version: "1.20"
+      config-file: .github/workflows/configs-docker/config-release.yml
+      compile-builder: true
