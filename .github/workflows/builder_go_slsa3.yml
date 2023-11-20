@@ -342,6 +342,7 @@ jobs:
           UNTRUSTED_COMMAND: "${{ needs.build-dry.outputs.go-command }}"
           UNTRUSTED_ENV: "${{ needs.build-dry.outputs.go-env }}"
           UNTRUSTED_WORKING_DIR: "${{ needs.build-dry.outputs.go-working-dir }}"
+          SIGSTORE_REKOR_PUBLIC_KEY: "xxx"
           GITHUB_CONTEXT: "${{ toJSON(github) }}"
         run: |
           set -euo pipefail
