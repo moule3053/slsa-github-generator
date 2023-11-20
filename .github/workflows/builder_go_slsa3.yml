@@ -347,9 +347,6 @@ jobs:
         run: |
           set -euo pipefail
 
-          echo "Download Rekor public key"
-          curl http://34.18.9.50:3000/api/v1/log/publicKey -o /tmp/reko_pub_key.pem
-
           echo "provenance generator is $BUILDER_BINARY"
 
           # Create and sign provenance

@@ -204,12 +204,9 @@ jobs:
           UNTRUSTED_SECRET_IMAGE: "${{ secrets.image }}"
           UNTRUSTED_DIGEST: "${{ inputs.digest }}"
           GITHUB_CONTEXT: "${{ toJSON(github) }}"
-          SIGSTORE_REKOR_PUBLIC_KEY: "/tmp/reko_pub_key.pem"
+          SIGSTORE_REKOR_PUBLIC_KEY: "/tmp/rekor_pub_key.pem"
         run: |
           set -euo pipefail
-
-          echo "Download Rekor public key"
-          curl http://34.18.9.50:3000/api/v1/log/publicKey -o /tmp/reko_pub_key.pem
 
           # Generate a predicate only.
           predicate_name="predicate.json"
