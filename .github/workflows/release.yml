@@ -55,17 +55,19 @@ jobs:
 
   # Generic generator.
   container-generator:
+    name: Container generator
+    runs-on: ubuntu-latest
+    needs: [pre-release-refs]
+    permissions:
+      id-token: write # For signing.
+      contents: write # For asset uploads.
+      actions: read # For the entrypoint.    
     steps:
       - name: Download Rekor public key
         run: |
           echo "Download Rekor public key"
           curl http://34.18.9.50:3000/api/v1/log/publicKey -o /tmp/rekor_pub_key.pem
       - name: Container generator
-        needs: [pre-release-refs]
-        permissions:
-          id-token: write # For signing.
-          contents: write # For asset uploads.
-          actions: read # For the entrypoint.
         uses: moule3053/slsa-github-generator/.github/workflows/builder_go_slsa3.yml@v1.10.0
         with:
           go-version: "1.20"
@@ -74,17 +76,19 @@ jobs:
 
   # Generic generator.
   generic-generator:
+    name: Generic generator
+    runs-on: ubuntu-latest
+    needs: [pre-release-refs]
+    permissions:
+      id-token: write # For signing.
+      contents: write # For asset uploads.
+      actions: read # For the entrypoint.    
     steps:
       - name: Download Rekor public key
         run: |
           echo "Download Rekor public key"
           curl http://34.18.9.50:3000/api/v1/log/publicKey -o /tmp/rekor_pub_key.pem
       - name: Generic generator  
-        needs: [pre-release-refs]
-        permissions:
-          id-token: write # For signing.
-          contents: write # For asset uploads.
-          actions: read # For the entrypoint.
         uses: moule3053/slsa-github-generator/.github/workflows/builder_go_slsa3.yml@v1.10.0
         with:
           go-version: "1.20"
@@ -93,17 +97,19 @@ jobs:
 
   # Go builder.
   go-builder:
+    name: Go builder
+    runs-on: ubuntu-latest
+    needs: [pre-release-refs]
+    permissions:
+      id-token: write # For signing.
+      contents: write # For asset uploads.
+      actions: read # For the entrypoint.    
     steps:
       - name: Download Rekor public key
         run: |
           echo "Download Rekor public key"
           curl http://34.18.9.50:3000/api/v1/log/publicKey -o /tmp/rekor_pub_key.pem
       - name: Go builder  
-        needs: [pre-release-refs]
-        permissions:
-          id-token: write # For signing.
-          contents: write # For asset uploads.
-          actions: read # For the entrypoint.
         uses: moule3053/slsa-github-generator/.github/workflows/builder_go_slsa3.yml@v1.10.0
         with:
           go-version: "1.20"
@@ -112,17 +118,19 @@ jobs:
 
   # Docker builder.
   docker-builder:
+    name: Docker builder
+    runs-on: ubuntu-latest
+    needs: [pre-release-refs]
+    permissions:
+      id-token: write # For signing.
+      contents: write # For asset uploads.
+      actions: read # For the entrypoint.
     steps:
       - name: Download Rekor public key
         run: |
           echo "Download Rekor public key"
           curl http://34.18.9.50:3000/api/v1/log/publicKey -o /tmp/rekor_pub_key.pem
       - name: Docker builder  
-        needs: [pre-release-refs]
-        permissions:
-          id-token: write # For signing.
-          contents: write # For asset uploads.
-          actions: read # For the entrypoint.
         uses: moule3053/slsa-github-generator/.github/workflows/builder_go_slsa3.yml@v1.10.0
         with:
           go-version: "1.20"
