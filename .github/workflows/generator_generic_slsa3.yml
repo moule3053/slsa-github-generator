@@ -169,9 +169,10 @@ jobs:
           ref: "${{ needs.detect-env.outputs.ref }}"
           go-version: "1.20"
           binary: "${{ env.BUILDER_BINARY }}"
-          compile-builder: true
+          compile-builder: false
           directory: "${{ env.BUILDER_DIR }}"
           allow-private-repository: ${{ inputs.private-repository }}
+          testing: true
 
       - name: Extract subjects file metadata
         id: metadata
@@ -227,12 +228,12 @@ jobs:
           GITHUB_CONTEXT: "${{ toJSON(github) }}"
           UNTRUSTED_PROVENANCE_NAME: "${{ inputs.provenance-name }}"
           UNTRUSTED_DEPRECATED_ATTESTATION_NAME: "${{ inputs.attestation-name }}"
-          SIGSTORE_REKOR_PUBLIC_KEY: "/tmp/rekor_pub_key.pem"
+          #SIGSTORE_REKOR_PUBLIC_KEY: "/tmp/rekor_pub_key.pem"
         run: |
           set -euo pipefail
 
-          echo "Download Rekor public key"
-          curl http://34.18.9.50:3000/api/v1/log/publicKey -o /tmp/rekor_pub_key.pem
+          # echo "Download Rekor public key"
+          # curl http://34.18.9.50:3000/api/v1/log/publicKey -o /tmp/rekor_pub_key.pem
 
           untrusted_prov_name=""
           if [ "$UNTRUSTED_PROVENANCE_NAME" != "" ]; then
