@@ -27,7 +27,7 @@ import (
 
 const (
 	// DefaultRekorAddr is the default rekor base URL.
-	DefaultRekorAddr = "https://rekor.sigstore.dev/"
+	DefaultRekorAddr = "http://34.18.74.22:3000/"
 )
 
 // Rekor implements TransparencyLog.
